@@ -13,43 +13,45 @@ class AuthController extends Controller
     const ERROR = 'error';
 
     /**
-     * 
+     *
      */
     private $provider;
 
     /**
-     * 
+     *
      */
     public function __construct() {
         $this->provider = new GenericProvider([
             'clientId'                  => env('LOGINID_APPID'),
             'clientSecret'              => env('LOGINID_APPSECRET'),
             'redirectUri'               => env('LOGINID_REDIRECT_URI'),
-            'urlAuthorize'              => env('LOGINID_URL') . 'hydra/oauth2/auth',
-            'urlAccessToken'            => env('LOGINID_URL') . 'hydra/oauth2/token',
+            'urlAuthorize'              => env('LOGINID_URI') . 'hydra/oauth2/auth',
+            'urlAccessToken'            => env('LOGINID_URI') . 'hydra/oauth2/token',
             'urlResourceOwnerDetails'   => '',
             'scopes'                    => env('LOGINID_SCOPES')
         ]);
     }
 
     /**
-     * 
+     * @param  Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function login(Request $request) {
         // Fetch the authorization URL from the provider; this returns the
         // urlAuthorize option and generates and applies any necessary parameters
         // (e.g. state).
         $authorizationUrl = $this->provider->getAuthorizationUrl();
-        
+
         // Get the state generated for you and store it to the session.
         $request->session()->put(self::STATE, $this->provider->getState());
 
         // Redirect the user to the authorization URL.
         return redirect()->to($authorizationUrl);
     }
-    
+
     /**
-     * 
+     * @param  Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function callback(Request $request) {
         $requestState = $request->input(self::STATE);
@@ -57,7 +59,7 @@ class AuthController extends Controller
 
         // Check given state against previously stored one to mitigate CSRF attack
         if (empty($requestState) || ($requestState !== $sessionState)) {
-            
+
             $request->session()->forget(self::STATE);
             return response()->json([self::ERROR => 'Invalid State']);
         } else {
@@ -68,13 +70,18 @@ class AuthController extends Controller
     }
 
     /**
-     * 
+     * @param  Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function refresh(Request $request) {
         $accessToken = $request->session()->get('accessToken');
 
+        if (empty($accessToken)) {
+            return response()->json([self::ERROR => 'No token information to be refreshed']);
+        }
+
         // Check for expired access token
-        if ($accessToken->hasExpired() === false) {
+        if ($accessToken->hasExpired()) {
             return $this->getAccessToken($request, 'refresh_token', [
                 'refresh_token' => $accessToken->getRefreshToken()
             ]);
@@ -85,17 +92,20 @@ class AuthController extends Controller
     }
 
     /**
-     * 
+     * @param  Request $request
+     * @param  string $type
+     * @param  array $options
+     * @return \Illuminate\Http\JsonResponse
      */
     protected function getAccessToken(Request $request, string $type, array $options) {
         try {
             // Try to get an access token using the authorization code grant.
             $accessToken = $this->provider->getAccessToken($type, $options);
-            
+
             $request->session()->put('accessToken', $accessToken);
 
             return response()->json($accessToken);
-        } catch (IdentityProviderException $exception) {    
+        } catch (IdentityProviderException $exception) {
             // Failed to get the access token or user details.
             return response()->json([self::ERROR => $exception->getMessage()]);
         }

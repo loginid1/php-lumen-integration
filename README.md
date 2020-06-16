@@ -47,10 +47,10 @@ LOGINID_REDIRECT_URI=http://php.integration.localhost:8000/callback
 
 ###### The `LOGINID_SCOPES` variable
 
-You can leave this field empty for now, but if you need access to the refresh token you need to provide the `offline` scope.
+Add the `openid` scope to have access to the JWT. If you need access to the refresh token also add the `offline` scope.
 
 ```
-LOGINID_SCOPES=offline
+LOGINID_SCOPES=openid
 ```
 
 ###### The `LOGINID_APPID` and `LOGINID_APPSECRET` variables

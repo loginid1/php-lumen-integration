@@ -104,7 +104,7 @@ class AuthController extends Controller
             $accessToken = $this->provider->getAccessToken($type, $options);
 
             $request->session()->put('accessToken', $accessToken);
-
+dd($accessToken);
             $token = explode('.', $accessToken->getValues()['id_token']);
             list($header64, $body64, $crypto64) = $token;
             $payload = JWT::jsonDecode(JWT::urlsafeB64Decode($body64));

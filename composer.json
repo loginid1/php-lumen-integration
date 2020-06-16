@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": "^7.2.5",
+        "firebase/php-jwt": "^5.2",
         "illuminate/session": "^7.1",
         "laravel/lumen-framework": "^7.0",
         "league/oauth2-client": "^2.4"

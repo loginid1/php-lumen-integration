@@ -14,7 +14,7 @@ use \Illuminate\Http\Request;
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return view('main');
 });
 
 

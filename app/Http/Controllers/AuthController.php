@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use \Firebase\JWT\JWT;
 use \Illuminate\Http\Request;
 use \League\OAuth2\Client\Provider\GenericProvider;
 use \League\OAuth2\Client\Provider\Exception\IdentityProviderException;
@@ -27,7 +28,7 @@ class AuthController extends Controller
             'redirectUri'               => env('LOGINID_REDIRECT_URI'),
             'urlAuthorize'              => env('LOGINID_URI') . 'hydra/oauth2/auth',
             'urlAccessToken'            => env('LOGINID_URI') . 'hydra/oauth2/token',
-            'urlResourceOwnerDetails'   => '',
+            'urlResourceOwnerDetails'   => env('LOGINID_URI') . 'hydra/userinfo',
             'scopes'                    => env('LOGINID_SCOPES')
         ]);
     }
@@ -104,7 +105,11 @@ class AuthController extends Controller
 
             $request->session()->put('accessToken', $accessToken);
 
-            return response()->json($accessToken);
+            $token = explode('.', $accessToken->getValues()['id_token']);
+            list($header64, $body64, $crypto64) = $token;
+            $payload = JWT::jsonDecode(JWT::urlsafeB64Decode($body64));
+
+            return view('main', ['name' => $payload->sub]);
         } catch (IdentityProviderException $exception) {
             // Failed to get the access token or user details.
             return response()->json([self::ERROR => $exception->getMessage()]);

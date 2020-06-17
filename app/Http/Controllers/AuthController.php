@@ -51,8 +51,8 @@ class AuthController extends Controller
     }
 
     /**
-     * @param  Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Laravel\Lumen\Application
      */
     public function callback(Request $request) {
         $requestState = $request->input(self::STATE);
@@ -93,10 +93,10 @@ class AuthController extends Controller
     }
 
     /**
-     * @param  Request $request
-     * @param  string $type
-     * @param  array $options
-     * @return \Illuminate\Http\JsonResponse
+     * @param Request $request
+     * @param string $type
+     * @param array $options
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\View\View|\Laravel\Lumen\Application
      */
     protected function getAccessToken(Request $request, string $type, array $options) {
         try {

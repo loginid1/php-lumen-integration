@@ -22,13 +22,16 @@ class AuthController extends Controller
      *
      */
     public function __construct() {
+        $URI = env('LOGINID_URI');
+        $URI = substr($URI, -1) === '/' ? $URI : "$URI/";
+
         $this->provider = new GenericProvider([
             'clientId'                  => env('LOGINID_APPID'),
             'clientSecret'              => env('LOGINID_APPSECRET'),
             'redirectUri'               => env('LOGINID_REDIRECT_URI'),
-            'urlAuthorize'              => env('LOGINID_URI') . 'hydra/oauth2/auth',
-            'urlAccessToken'            => env('LOGINID_URI') . 'hydra/oauth2/token',
-            'urlResourceOwnerDetails'   => env('LOGINID_URI') . 'hydra/userinfo',
+            'urlAuthorize'              => $URI . 'hydra/oauth2/auth',
+            'urlAccessToken'            => $URI . 'hydra/oauth2/token',
+            'urlResourceOwnerDetails'   => $URI . 'hydra/userinfo',
             'scopes'                    => env('LOGINID_SCOPES')
         ]);
     }

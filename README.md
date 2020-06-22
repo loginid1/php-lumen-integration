@@ -97,18 +97,18 @@ LOGINID_APPSECRET=your.application.secret
 #### Requirements
 
  `php ^7.2.5`
-
-
-#### Installing dependencies
-
-```
-$ composer install
-```
+ `sqlite database` (see the following step)
 
 #### Create a new sqlite database in `database` folder.
 
 ```
 $ touch database/database.sqlite
+```
+
+#### Installing dependencies
+
+```
+$ composer install
 ```
 
 #### Execute the migrate Artisan command

@@ -105,6 +105,12 @@ LOGINID_APPSECRET=your.application.secret
 $ composer install
 ```
 
+#### Create a new sqlite database in `database` folder.
+
+```
+$ touch database/database.sqlite
+```
+
 #### Execute the migrate Artisan command
 
 ```

@@ -94,10 +94,21 @@ LOGINID_APPSECRET=your.application.secret
 
 ## Running the project
 
+#### Requirements
+
+ `php ^7.2.5`
+
+
 #### Installing dependencies
 
 ```
 $ composer install
+```
+
+#### Execute the migrate Artisan command
+
+```
+$ php artisan migrate
 ```
 
 #### Execute the project

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use \Firebase\JWT\JWT;
 use \Illuminate\Http\Request;
 use \League\OAuth2\Client\Provider\GenericProvider;
@@ -109,7 +110,20 @@ class AuthController extends Controller
             list($header64, $body64, $crypto64) = $token;
             $payload = JWT::jsonDecode(JWT::urlsafeB64Decode($body64));
 
-            return view('main', ['name' => $payload->sub]);
+            //Find the user object from model if exists
+            $user = User::where([
+                        ['username', '=', $payload->sub],
+                        ['client_id', '=', $payload->aud[0]],
+                    ])->first();
+
+            //Create a new user entry if user data is not found
+            if ($user == null) {
+                $user = new User;
+                $user->initialize($payload->sub, $payload->aud[0]);
+                $user->save();
+            }
+
+            return view('profile', [ 'user' => $user ]);
         } catch (IdentityProviderException $exception) {
             // Failed to get the access token or user details.
             return response()->json([self::ERROR => $exception->getMessage()]);

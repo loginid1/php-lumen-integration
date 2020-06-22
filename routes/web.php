@@ -14,10 +14,11 @@ use \Illuminate\Http\Request;
 */
 
 $router->get('/', function () use ($router) {
-    return view('main');
+    return view('login');
 });
-
 
 $router->get('/login', 'AuthController@login');
 $router->get('/callback', 'AuthController@callback');
 $router->get('/refresh', 'AuthController@refresh');
+
+$router->post('/users/{id}', 'UserController@update');

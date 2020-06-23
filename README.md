@@ -96,8 +96,14 @@ LOGINID_APPSECRET=your.application.secret
 
 #### Requirements
 
- `php ^7.2.5`
- `sqlite database` (see the following step)
+- `PHP 7.2.5+`
+- `sqlite database` (see the following step)
+
+#### Clone this repository and go to your cloned folder
+```
+$ git clone https://github.com/loginid1/php-lumen-integration.git
+$ cd php-lumen-integration
+```
 
 #### Create a new sqlite database in `database` folder.
 

@@ -94,10 +94,33 @@ LOGIN_APPSECRET=your.application.secret
 
 ## Running the project
 
+#### Requirements
+
+- `PHP 7.2.5+`
+- `sqlite database` (see the following step)
+
+#### Clone this repository and go to your cloned folder
+```
+$ git clone https://github.com/loginid1/php-lumen-integration.git
+$ cd php-lumen-integration
+```
+
+#### Create a new sqlite database in `database` folder.
+
+```
+$ touch database/database.sqlite
+```
+
 #### Installing dependencies
 
 ```
 $ composer install
+```
+
+#### Execute the migrate Artisan command
+
+```
+$ php artisan migrate
 ```
 
 #### Execute the project

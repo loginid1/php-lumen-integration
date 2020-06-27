@@ -11,16 +11,17 @@ This is an integration sample written in PHP using the [Lumen](https://lumen.lar
 
 ## Local setup
 
-To run this project locally in your development environment, you will have to use the `localhost` or `127.0.0.1`. For this project we are using the `localhost` URI.
+To run this project locally in your development environment, you will have to use `localhost` or `127.0.0.1`. For this project, we are using `localhost` URI.
 
 **Optional configuration:**
 
 If you are running multiple projects, consider accessing the `hosts` file to add a custom URI setting for your project.
 
 **Linux and macOS:** `/etc/hosts`
+
 **Windows:** `C:\windows\system32\drivers\etc\hosts`
 
-Our `hosts` file will look like the following:
+The `hosts` file will look like the following:
 ```
 # Default Settings
 127.0.0.1       localhost
@@ -31,7 +32,7 @@ Our `hosts` file will look like the following:
 127.0.0.1       php.integration.localhost
 ```
 
-**Note:** When using a custom URIs for your local projects, you will have to use the `.localhost` suffix.
+**Note:** When using a custom URIs for your local projects, you will have to use `.localhost` suffix.
 
 #### Clone the project
 
@@ -88,8 +89,6 @@ LOGIN_URI=https://sandbox-apse1.api.loginid.io
 #### The `LOGIN_REDIRECT_URI` variable
 
 When the user authenticates themselves with LoginID (similar to authenticating with Google), LoginID will need to pass back control and information back to your servers. The Callback URL is the path that will be used to accomplish this and you will need to define it.
-
-Because we are using the custom URI our variable will look like the following:
 
 ```
 LOGIN_REDIRECT_URI=http://localhost:8000/callback

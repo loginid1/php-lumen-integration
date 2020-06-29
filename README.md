@@ -1,6 +1,6 @@
 # PHP (laravel/lumen) OIDC Integration
 
-This is an integration sample written in PHP using the [Lumen](https://lumen.laravel.com/) micro-framework.
+This is an integration sample written in PHP using the [Lumen](https://lumen.laravel.com/) micro-framework. The core logic of this application is at the [AuthController](app/Http/Controllers/AuthController.php). There you will find the setup logic for [league/oauth2-client](https://github.com/thephpleague/oauth2-client) and the flow for making login calls and the setup for the callback endpoint.
 
 ## Requirements
 
@@ -51,6 +51,14 @@ This project utilizes [Composer](https://getcomposer.org/) to manage its depende
 $ composer install
 ```
 
+#### Fill the environment variables
+
+To configure environment variables you will need to rename the `.env.example` file to `.env` and fill all the environment variables. To have a better understanding of the variables please refer to this [section](#filling-the-environment-variables).
+
+```
+$ mv .env.example .env
+```
+
 #### Create the database
 
 Another requirement to run this project is to have [SQLite](https://www.sqlite.org/) installed. So, before using this project, make sure you have SQLite installed on your machine.
@@ -58,14 +66,6 @@ Another requirement to run this project is to have [SQLite](https://www.sqlite.o
 ```
 $ touch database/database.sqlite
 $ php artisan migrate
-```
-
-#### Fill the environment variables
-
-To configure environment variables you will need to rename the `.env.example` file to `.env` and fill all the environment variables. To have a better understanding of the variables please refer to this [section](#filling-the-environment-variables).
-
-```
-$ mv .env.example .env
 ```
 
 #### Execute the project

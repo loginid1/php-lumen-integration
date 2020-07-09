@@ -9,6 +9,8 @@ This is an integration sample written in PHP using the [Lumen](https://lumen.lar
 - `SQLite`
 - `Git`
 
+To learn more about how to download, install and configure these requirements, please refer to our [windows](.docs/WindowsSetup.md) environment setup guide.
+
 ## Local setup
 
 To run this project locally in your development environment, you will have to use `localhost` or `127.0.0.1`. For this project, we are using `localhost` URI.

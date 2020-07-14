@@ -84,10 +84,10 @@ $ php -S localhost:8000 -t public
 
 #### The `LOGIN_URI` variable
 
-This is the URI that will be used to communicate with LoginID's servers, for this example, we are using the development servers, therefore we are going to use the `https://sandbox-apse1.api.loginid.io` URI.
+This is the URI that will be used to communicate with LoginID's servers, for this example, we are using the development servers, therefore we are going to use the `https://sandbox-usw1.api.loginid.io` URI.
 
 ```
-LOGIN_URI=https://sandbox-apse1.api.loginid.io
+LOGIN_URI=https://sandbox-usw1.api.loginid.io
 ```
 
 #### The `LOGIN_REDIRECT_URI` variable
@@ -116,7 +116,7 @@ To obtain the client keys you will need to perform the following steps:
 
 **Step 1** - Using an existing account or registering a new one
 
- - Navigate to https://sandbox-apse1.api.loginid.io
+ - Navigate to https://sandbox-usw1.api.loginid.io/en/register
  - Enter your username and organization id for an existing account or select the **"Sign Up"** option and create a new account.
  - Hit the **"Login"** or **"Register"** button
 

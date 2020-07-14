@@ -64,14 +64,14 @@ To work with SQLite on Windows, you need to [download](https://www.sqlite.org/20
 - Set up your `Path` environment variable so you can simply call `sqlite3` from any directory.
 
 To setup the Windows environment variable first open the Control Panel (`Win` + `R`, type `control`, press `OK`). Navigate to `System and Security`:
-![Control Panel](assets/windows_control_panel_001.png?raw=true)
+![Control Panel](https://raw.githubusercontent.com/loginid1/php-lumen-integration/master/.docs/assets/windows_control_panel_001.png?raw=true)
 Select `System`:
-![Control Panel](assets/windows_control_panel_002.png?raw=true)
+![Control Panel](https://raw.githubusercontent.com/loginid1/php-lumen-integration/master/.docs/assets/windows_control_panel_002.png?raw=true)
 Under the `Control Panel` > `System and Security` > `System` menu select `Advanced system settings`:
-![Control Panel](assets/windows_control_panel_003.png?raw=true)
+![Control Panel](https://raw.githubusercontent.com/loginid1/php-lumen-integration/master/.docs/assets/windows_control_panel_003.png?raw=true)
 Then, under the `Advanced` tab, click on the `Environment Variables...` button:
-![Control Panel](assets/windows_control_panel_004.png?raw=true)
+![Control Panel](https://raw.githubusercontent.com/loginid1/php-lumen-integration/master/.docs/assets/windows_control_panel_004.png?raw=true)
 Find the `Path` row under `System variables`, select it and click the `Edit...` button:
-![Control Panel](assets/windows_control_panel_005.png?raw=true)
+![Control Panel](https://raw.githubusercontent.com/loginid1/php-lumen-integration/master/.docs/assets/windows_control_panel_005.png?raw=true)
 Click the `New` button and add the `C:\Program Files\SQLite` folder path as a new row and Click `OK`
-![Control Panel](assets/windows_control_panel_006.png?raw=true)
+![Control Panel](https://raw.githubusercontent.com/loginid1/php-lumen-integration/master/.docs/assets/windows_control_panel_006.png?raw=true)

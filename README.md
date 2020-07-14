@@ -1,6 +1,6 @@
 # PHP (laravel/lumen) OIDC Integration
 
-This is an integration sample written in PHP using the [Lumen](https://lumen.laravel.com/) micro-framework. The core logic of this application is at the [AuthController](app/Http/Controllers/AuthController.php). There you will find the setup logic for [league/oauth2-client](https://github.com/thephpleague/oauth2-client) and the flow for making login calls and the setup for the callback endpoint.
+This is an integration sample written in PHP using the [Lumen](https://lumen.laravel.com/) micro-framework. The core logic of this application is at the [AuthController](https://github.com/loginid1/php-lumen-integration/blob/master/app/Http/Controllers/AuthController.php). There you will find the setup logic for [league/oauth2-client](https://github.com/thephpleague/oauth2-client) and the flow for making login calls and the setup for the callback endpoint.
 
 [![asciicast](https://asciinema.org/a/346777.svg)](https://asciinema.org/a/346777)
 

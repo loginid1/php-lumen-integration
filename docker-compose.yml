@@ -1,11 +1,9 @@
 version: '3.8'
 services:
 
-    #PHP Service
+    # PHP Service
     app:
-        build:
-            context: .
-            dockerfile: .docker/Dockerfile
+        image: loginid1/php-lumen-integration:latest
         container_name: app
         restart: unless-stopped
         tty: true
@@ -16,7 +14,7 @@ services:
         networks:
             - app-network
 
-    #Nginx Service
+    # Nginx Service
     webserver:
         image: nginx:alpine
         container_name: webserver
@@ -31,7 +29,7 @@ services:
         networks:
             - app-network
 
-#Docker Networks
+# Docker Networks
 networks:
     app-network:
         driver: bridge

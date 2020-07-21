@@ -57,10 +57,10 @@ $ composer install
 
 #### Fill the environment variables
 
-To configure environment variables you will need to rename the `.env.example` file to `.env` and fill all the environment variables. To have a better understanding of the variables please refer to this [section](#filling-the-environment-variables).
+To configure environment variables you will need make a copy of `.env.example` file and rename it to `.env` and fill all the environment variables. To have a better understanding of the variables please refer to this [section](#filling-the-environment-variables).
 
 ```
-$ mv .env.example .env
+$ cp .env.example .env
 ```
 
 #### Create the database

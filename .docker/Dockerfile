@@ -11,25 +11,23 @@ RUN apk add -Uuv \
     libpng-dev \
     && rm -rf /var/cache/apk/*
 
-# Install wait-for-it
-RUN curl https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > /opt/wait-for-it.sh \
-    && chmod +x /opt/wait-for-it.sh \
-    && ln -s /opt/wait-for-it.sh /usr/bin/wait-for-it
-
 # Download and install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set working directory
 WORKDIR /var/www
 
-# Copy existing application directory permissions
+# Copy and install composer dependencies
+COPY composer.json composer.lock ./
+RUN composer install --no-scripts --no-autoloader
+
 COPY . .
-RUN composer install
+RUN chmod +x artisan
 
 # Create the database file and run the migrations
 RUN touch database/database.sqlite \
-    && php artisan migrate
+    && php artisan migrate --force
 
-# Expose port 9000 and start php-fpm server
-EXPOSE 9000
-CMD ["php-fpm"]
+# Expose port 8000 and start php-fpm server
+EXPOSE 8000
+CMD php -S 0.0.0.0:8000 -t public

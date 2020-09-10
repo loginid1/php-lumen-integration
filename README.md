@@ -84,10 +84,10 @@ $ php -S localhost:8000 -t public
 
 #### The `LOGIN_URI` variable
 
-This is the URI that will be used to communicate with LoginID's servers, for this example, we are using the development servers, therefore we are going to use the `https://sandbox-usw1.api.loginid.io` URI.
+This is the URI that will be used to communicate with LoginID's servers, for this example, we are using the development servers, therefore we are going to use the `https://oauth2.sandbox-usw1.api.loginid.io` URI.
 
 ```
-LOGIN_URI=https://sandbox-usw1.api.loginid.io
+LOGIN_URI=https://oauth2.sandbox-usw1.api.loginid.io
 ```
 
 #### The `LOGIN_REDIRECT_URI` variable

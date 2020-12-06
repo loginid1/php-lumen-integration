@@ -30,9 +30,9 @@ class AuthController extends Controller
             'clientId'                  => env('LOGIN_APPID'),
             'clientSecret'              => env('LOGIN_APPSECRET'),
             'redirectUri'               => env('LOGIN_REDIRECT_URI'),
-            'urlAuthorize'              => $URI . 'oauth2/auth',
-            'urlAccessToken'            => $URI . 'oauth2/token',
-            'urlResourceOwnerDetails'   => $URI . 'userinfo',
+            'urlAuthorize'              => $URI . '/oauth2/auth',
+            'urlAccessToken'            => $URI . '/oauth2/token',
+            'urlResourceOwnerDetails'   => $URI . '/userinfo',
             'scopes'                    => env('LOGIN_SCOPES')
         ]);
     }
